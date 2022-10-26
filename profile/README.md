@@ -1,6 +1,4 @@
-## 横山研究室 @ 東京都立大学
-## Yokoyama Laboratory @ Tokyo Metropolitan University
-情報の偏在性と遍在性を科学する
+# 横山研究室
 
 ### リンク集
 [ホームページ](https://tmu.yokoyama.ac/)
