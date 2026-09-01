@@ -18,9 +18,9 @@ body:
         - 読み始めた時点でIssueを作成して構いません。
         - 読み終わって内容を記入したらIssueをCloseしてください。
         - Open = 読書中、Closed = 読了として中央の論文調査一覧に表示します。
-        - Project 16 では Scope を `Paper Survey` とし、週次Iterationは設定しません。
-        - **研究の柱はIssue本文では入力せず、Project 16 に既にある研究の柱用Single select fieldを選択してください。**
-          中央の論文調査一覧もProject側の値を唯一の正として分類します。
+        - 横山研進捗管理プロジェクトでは Scope を `Paper Survey` とし、週次Iterationは設定しません。
+        - **研究の柱はIssue本文では入力せず、横山研進捗管理プロジェクトに既にある研究の柱用Single select fieldを選択してください。**
+          中央の論文調査一覧もプロジェクト側の値を唯一の正として分類します。
 
   - type: input
     id: paper-title
