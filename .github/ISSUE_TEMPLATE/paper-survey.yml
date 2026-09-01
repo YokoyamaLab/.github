@@ -1,6 +1,8 @@
 name: "論文調査"
 description: "投稿予定研究に必要な関連研究を整理し、背景・前提・ライバル・周辺研究を構造化して記録します"
 title: "[Paper Survey] "
+labels:
+  - "paper-survey"
 projects:
   - "YokoyamaLab/16"
 
