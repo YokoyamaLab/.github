@@ -1,6 +1,8 @@
 name: "週次報告"
 description: "月曜日に今週の目標を設定し、金曜日に成果と課題を振り返ります"
 title: "[Weekly] "
+labels:
+  - "weekly"
 projects:
   - "YokoyamaLab/16"
 
@@ -8,13 +10,14 @@ body:
   - type: markdown
     attributes:
       value: |
-        # 週次報告
+        # Weekly Research Progress
 
         このIssueは、月曜日に今週の目標を設定し、金曜日に成果と課題を振り返るための週次記録です。
 
+        - Project 16 では Scope を `Weekly` とします。
+        - このIssueだけ週次の Iteration を割り当てます。
         - 月曜日: 今週の目標と成果物を記入してください。
         - 金曜日: 実際の成果、未完了事項、成果物へのリンク、次週の課題を追記してください。
-        - Project 16 では Scope を `Weekly` とし、このIssueだけ Iteration（週）を割り当てます。
 
   - type: input
     id: week
