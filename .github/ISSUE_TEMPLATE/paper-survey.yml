@@ -1,5 +1,5 @@
-name: "論文調査"
-description: "投稿予定研究に必要な関連研究を整理し、背景・前提・ライバル・周辺研究を構造化して記録します"
+name: "論文調査（1論文1Issue）"
+description: "読んだ論文を1本ずつ記録します。1 Issue = 1論文です"
 title: "[Paper Survey] "
 labels:
   - "paper-survey"
@@ -10,202 +10,140 @@ body:
   - type: markdown
     attributes:
       value: |
-        # 論文調査
+        # 論文調査 / Paper Survey
 
-        このIssueは `YokoyamaLab/papers-bank` の既存テンプレートをベースに、関連研究調査用として移植したものです。
+        **このIssueは1本の論文につき1件作成してください。**
 
-        - Project 16 では Scope を `Paper Survey` とします。
-        - このIssueには週次の Iteration は割り当てません。
-        - まだ調査途中でもIssueを作成し、見つけた論文を継続的に追加してください。
-        - 単に論文を列挙するのではなく、自分の研究との関係を明記してください。
+        - 複数論文を1つのIssueへまとめないでください。
+        - 読み始めた時点でIssueを作成して構いません。
+        - 読み終わって内容を記入したらIssueをCloseしてください。
+        - Open = 読書中、Closed = 読了として中央の論文調査一覧に表示します。
+        - Project 16 では Scope を `Paper Survey` とし、週次Iterationは設定しません。
+        - **研究の柱はIssue本文では入力せず、Project 16 に既にある研究の柱用Single select fieldを選択してください。**
+          中央の論文調査一覧もProject側の値を唯一の正として分類します。
 
   - type: input
-    id: research-title
+    id: paper-title
     attributes:
-      label: "対象研究・論文の仮題"
-      description: "何のための論文調査なのか分かる名称を書いてください"
+      label: "論文タイトル"
+      description: "論文の正式タイトルを記入してください"
+      placeholder: "Attention Is All You Need"
     validations:
       required: true
 
-  - type: textarea
-    id: research-summary
+  - type: input
+    id: authors
     attributes:
-      label: "どのような研究か"
-      description: "一段落で研究の概要を書いてください"
+      label: "著者"
+      description: "主要著者を記入してください。長い場合は et al. でも構いません"
+      placeholder: "Vaswani et al."
+    validations:
+      required: true
+
+  - type: input
+    id: venue
+    attributes:
+      label: "会議名・論文誌名"
+      description: "会議、論文誌、arXiv等を記入してください"
+      placeholder: "NeurIPS 2017"
+    validations:
+      required: false
+
+  - type: input
+    id: publication-year
+    attributes:
+      label: "発表年"
+      placeholder: "2017"
+    validations:
+      required: true
+
+  - type: input
+    id: paper-url
+    attributes:
+      label: "論文URL / DOI"
+      description: "DOI、出版社ページ、arXiv等のURLを記入してください"
+      placeholder: "https://..."
+    validations:
+      required: true
+
+  - type: input
+    id: one-line-summary
+    attributes:
+      label: "一言まとめ"
+      description: "この論文が何をした論文なのか、一覧を見ただけで分かる1文を書いてください"
+      placeholder: "自己注意機構だけで系列変換を行うTransformerを提案した論文。"
     validations:
       required: true
 
   - type: textarea
     id: problem
     attributes:
-      label: "この研究で解決しようとしている問題"
-      description: "具体的に記述してください"
+      label: "何を解決しようとしているか"
+      description: "この論文が扱う問題・課題を簡潔に書いてください"
     validations:
       required: true
 
   - type: textarea
-    id: expected-result
+    id: method
     attributes:
-      label: "うまくいけばどのような成果が得られるか"
-      description: "仮説段階でも構いません。期待する成果を書いてください"
+      label: "どのような方法か"
+      description: "提案手法、モデル、アルゴリズム、実験設計などを自分の言葉でまとめてください"
     validations:
       required: true
 
   - type: textarea
-    id: evaluation-plan
+    id: data
     attributes:
-      label: "評価としてどのようなグラフ・表を示す計画か"
-      description: "縦軸、横軸、比較対象、評価指標なども書いてください"
-      placeholder: |
-        - Figure/Table:
-        - X-axis:
-        - Y-axis:
-        - Baseline:
-        - Metric:
+      label: "どのようなデータを使っているか"
+      description: "データセット、センサ、SNS、画像、時系列など、対象データを書いてください"
     validations:
       required: false
 
   - type: textarea
-    id: required-data
+    id: result
     attributes:
-      label: "評価に必要なデータ"
-      description: "どのようなデータが必要になるかを書いてください"
+      label: "主な結果・分かったこと"
+      description: "何と比較して、何が良くなった／分かったのかを書いてください"
+    validations:
+      required: true
+
+  - type: textarea
+    id: strengths-limitations
+    attributes:
+      label: "良い点・限界・疑問点"
+      value: |
+        ### 良い点
+        -
+
+        ### 限界
+        -
+
+        ### 疑問点
+        -
     validations:
       required: false
 
   - type: textarea
-    id: required-implementation
+    id: relation
     attributes:
-      label: "必要な実装・分析"
-      description: "必要な実装、前処理、分析などを書いてください"
-    validations:
-      required: false
-
-  - type: textarea
-    id: system-sketch
-    attributes:
-      label: "システムのポンチ絵・構成メモ"
-      description: "画像を貼るか、構成を文章・Mermaidなどで記述してください"
-    validations:
-      required: false
-
-  - type: markdown
-    attributes:
+      label: "自分の研究との関係"
+      description: "なぜこの論文を読んだか、自分の研究でどこを利用・比較・引用できそうかを書いてください"
       value: |
-        ---
-        ## 関連研究
-
-        以下は `papers-bank` の分類を踏襲しています。
-
-  - type: textarea
-    id: background-papers
-    attributes:
-      label: "提案手法の背景を説明するための関連研究（最低2件）"
-      description: "研究領域の背景・必要性を説明するために引用する論文です"
-      value: |
-        1. 著者、タイトル、会議名・論文誌名、発表年、URL/DOI
-           - 1行で概要:
-           - 自分の研究との関係:
-
-        2. 著者、タイトル、会議名・論文誌名、発表年、URL/DOI
-           - 1行で概要:
-           - 自分の研究との関係:
-    validations:
-      required: true
-
-  - type: textarea
-    id: prerequisite-papers
-    attributes:
-      label: "提案手法の前提となる関連研究（最低2件）"
-      description: "自分の手法が利用・拡張・前提としている技術や研究です"
-      value: |
-        1. 著者、タイトル、会議名・論文誌名、発表年、URL/DOI
-           - 1行で概要:
-           - どの部分を前提としているか:
-
-        2. 著者、タイトル、会議名・論文誌名、発表年、URL/DOI
-           - 1行で概要:
-           - どの部分を前提としているか:
-    validations:
-      required: true
-
-  - type: textarea
-    id: rival-papers
-    attributes:
-      label: "提案手法の直接的なライバルとなる関連研究（最低2件）"
-      description: "同じ問題を解き、比較対象になり得る研究です。比較実験可能かも記述してください"
-      value: |
-        1. 著者、タイトル、会議名・論文誌名、発表年、URL/DOI
-           - 概要:
-           - 提案手法との違い:
-           - 比較実験可能か:
-
-        2. 著者、タイトル、会議名・論文誌名、発表年、URL/DOI
-           - 概要:
-           - 提案手法との違い:
-           - 比較実験可能か:
-    validations:
-      required: true
-
-  - type: textarea
-    id: peripheral-papers
-    attributes:
-      label: "同じような目的を持つが直接のライバルではない周辺研究（最低4件）"
-      description: "目的や応用領域は近いが、直接比較の対象にはならない研究です"
-      value: |
-        1. 著者、タイトル、会議名・論文誌名、発表年、URL/DOI
-           - 概要:
-           - なぜ直接のライバルではないか:
-
-        2. 著者、タイトル、会議名・論文誌名、発表年、URL/DOI
-           - 概要:
-           - なぜ直接のライバルではないか:
-
-        3. 著者、タイトル、会議名・論文誌名、発表年、URL/DOI
-           - 概要:
-           - なぜ直接のライバルではないか:
-
-        4. 著者、タイトル、会議名・論文誌名、発表年、URL/DOI
-           - 概要:
-           - なぜ直接のライバルではないか:
-    validations:
-      required: true
-
-  - type: textarea
-    id: survey-summary
-    attributes:
-      label: "調査から分かったこと"
-      description: "既存研究の空白、差別化ポイント、研究方針の変更などを整理してください"
-      value: |
-        ### 既存研究で既にできていること
+        ### なぜ読んだか
         -
 
-        ### まだ十分に解決されていないこと
+        ### 自分の研究に使えそうな点
         -
 
-        ### 自分の研究の差別化ポイント
-        -
-
-        ### 調査を踏まえて変更したいこと
+        ### 比較対象・引用候補として
         -
     validations:
       required: true
 
   - type: textarea
-    id: links
+    id: notes
     attributes:
-      label: "リンク集"
-      value: |
-        ### 論文・文献管理
-        -
-
-        ### Overleaf
-        https://
-
-        ### GitHub
-        https://
-
-        ### その他
-        -
+      label: "メモ"
+      description: "図番号、重要な式、再読したい箇所、関連Issueなど自由に記録してください"
     validations:
       required: false
